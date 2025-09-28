@@ -1,0 +1,87 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <title>Churn Telco-Business Prediction</title>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+ 
+  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css">
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js"></script>
+  <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js"></script>
+
+  <style>
+    body {
+      background: linear-gradient(135deg, #f5f7fa 0%, #c3cfe2 100%);
+      min-height: 100vh;
+      padding-top: 30px;
+    }
+    .purple-border {
+      border: 2px solid #6f42c1 !important;
+      border-radius: 0.5rem;
+    }
+    .card-header {
+      background: linear-gradient(90deg, #6f42c1 0%, #007bff 100%);
+      color: #fff;
+      font-size: 1.3rem;
+      font-weight: 500;
+      text-align: center;
+      letter-spacing: 1px;
+    }
+    .btn-primary {
+      background: linear-gradient(90deg, #007bff 0%, #6f42c1 100%);
+      border: none;
+    }
+    label {
+      font-weight: 500;
+      color: #6f42c1;
+    }
+    .output-card {
+      margin-top: 2rem;
+    }
+  </style>
+</head>
+<body>
+  <div class="container">
+    <div class="row justify-content-center">
+      <div class="col-md-8">
+        <div class="card shadow">
+          <div class="card-header">
+            Churn Prediction Form
+          </div>
+          <div class="card-body">
+            <form method="POST">
+              <div class="row">
+                <div class="col-md-9">
+                  <!-- Input fields -->
+                  {% for i in range(1,20) %}
+                  <div class="form-group purple-border mb-3">
+                    <label for="query{{i}}">{{ field_names[i-1] }}:</label>
+                    <textarea class="form-control" rows="2" id="query{{i}}" name="query{{i}}" autofocus>{{ request.form['query' ~ i] if request.form else '' }}</textarea>
+                  </div>
+                  {% endfor %}
+                </div>
+                <div class="col-md-3 d-flex align-items-center justify-content-center">
+                  <button type="submit" class="btn btn-primary btn-lg px-4 mt-2 mb-2" name="submit">SUBMIT</button>
+                </div>
+              </div>
+            </form>
+          </div>
+        </div>
+        <!-- Output Section -->
+        {% if output1 %}
+        <div class="card output-card shadow">
+          <div class="card-header">
+            Prediction Output
+          </div>
+          <div class="card-body">
+            <textarea class="form-control mb-2" rows="2" readonly>{{ output1 }}</textarea>
+            <textarea class="form-control" rows="2" readonly>{{ output2 }}</textarea>
+          </div>
+        </div>
+        {% endif %}
+      </div>
+    </div>
+  </div>
+</body>
+</html>
