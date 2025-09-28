@@ -13,14 +13,4 @@ This project develops a machine learning model to predict customer churn for a t
 
 - Supports input fields based on common telecom customer attributes (e.g., MonthlyCharges, Contract type).
 
-  ## Dataset
-- Dataset used: first_telc.csv (Telco customer data with features relevant to churn).
-
-- Key features include gender, tenure, payment method, internet service type, and customer support options.
-
-- Target variable: customer churn status (binary classification).
-
-  ### How to Run
-- 1.Install required packages (listed in requirements.txt).
-
-- 2.Train the model or use provided saved model model.sav.
+ 
